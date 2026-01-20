@@ -1,6 +1,6 @@
 import React from 'react';
-import { Github, Linkedin, Twitter } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio';
+import { Github, Linkedin, Twitter, Code } from 'lucide-react';
 
 /**
  * 网站页脚组件
@@ -10,70 +10,34 @@ export const Footer: React.FC = () => {
   const { personalInfo } = portfolioData;
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-100 py-12">
-      <div className="container mx-auto px-4">
-        {/* 页脚内容区域 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* 个人信息 */}
-          <div>
-            <h3 className="text-xl font-bold text-gray-800 mb-4">{personalInfo.name}</h3>
-            <p className="text-gray-600 mb-4">{personalInfo.title}</p>
-            <p className="text-gray-600">{personalInfo.bio}</p>
+    <footer className="bg-gray-900 text-white py-12 px-4 md:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-6 md:mb-0">
+            <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              张三的作品集
+            </h3>
+            <p className="text-gray-400 mt-2">专注于创建现代化、响应式的Web应用</p>
           </div>
-
-          {/* 联系方式 */}
-          <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">联系方式</h3>
-            <ul className="space-y-2">
-              {personalInfo.email && (
-                <li className="flex items-center text-gray-600">
-                  <span className="mr-2">📧</span>
-                  <a href={`mailto:${personalInfo.email}`} className="hover:text-blue-500 transition-colors">
-                    {personalInfo.email}
-                  </a>
-                </li>
-              )}
-              {personalInfo.location && (
-                <li className="flex items-center text-gray-600">
-                  <span className="mr-2">📍</span>
-                  {personalInfo.location}
-                </li>
-              )}
-            </ul>
-          </div>
-
-          {/* 社交媒体链接 */}
-          <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">社交媒体</h3>
-            <div className="flex space-x-4">
-              {personalInfo.socialLinks.map((link) => {
-                // 根据平台名称返回对应的图标组件
-                const IconComponent = {
-                  github: Github,
-                  linkedin: Linkedin,
-                  twitter: Twitter
-                }[link.icon] || Github;
-
-                return (
-                  <a
-                    key={link.platform}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-500 transition-colors"
-                    aria-label={link.platform}
-                  >
-                    <IconComponent size={20} />
-                  </a>
-                );
-              })}
-            </div>
+          
+          <div className="flex space-x-6">
+            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <Github size={20} />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <Linkedin size={20} />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <Twitter size={20} />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <Code size={20} />
+            </a>
           </div>
         </div>
-
-        {/* 版权声明 */}
-        <div className="mt-12 pt-8 border-t border-gray-200 text-center text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} {personalInfo.name}. 保留所有权利。</p>
+        
+        <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500">
+          <p>© {new Date().getFullYear()} {personalInfo.name}. 保留所有权利.</p>
         </div>
       </div>
     </footer>

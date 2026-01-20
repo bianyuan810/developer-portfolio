@@ -1,105 +1,137 @@
-import { PortfolioData } from '@/types/portfolio';
+import type { PortfolioData } from '@/types/portfolio';
 
 export const portfolioData: PortfolioData = {
   personalInfo: {
     name: "张三",
-    title: "全栈开发工程师",
-    bio: "热爱技术，专注于构建高性能 Web 应用，拥有丰富的前端和后端开发经验。",
+    title: "前端开发者",
+    bio: "专注于创建现代化、响应式的Web应用，热爱前端技术和用户体验设计。",
     avatar: "/images/avatar.jpg",
-    location: "北京",
-    email: "example@email.com",
+    location: "北京市朝阳区",
+    email: "zhangsan@example.com",
+    phone: "+86 123 4567 890",
     socialLinks: [
       {
         platform: "GitHub",
-        url: "https://github.com/username",
+        url: "#",
         icon: "github"
       },
       {
         platform: "LinkedIn",
-        url: "https://linkedin.com/in/username",
+        url: "#",
         icon: "linkedin"
       },
       {
         platform: "Twitter",
-        url: "https://twitter.com/username",
+        url: "#",
         icon: "twitter"
+      },
+      {
+        platform: "CodePen",
+        url: "#",
+        icon: "codepen"
       }
-    ],
-    resumeUrl: "/resume.pdf"
+    ]
   },
   skills: [
     {
-      category: "前端开发",
-      icon: "layout",
+      category: "技术技能",
+      icon: "code",
       items: [
-        { name: "React", level: 5, years: 3, highlighted: true },
-        { name: "TypeScript", level: 4, years: 2, highlighted: true },
-        { name: "Tailwind CSS", level: 4, years: 2 },
-        { name: "HTML5", level: 5, years: 4 },
-        { name: "CSS3", level: 5, years: 4 },
-        { name: "JavaScript", level: 5, years: 4 },
-        { name: "Next.js", level: 3, years: 1 }
+        { name: "HTML5" },
+        { name: "CSS3" },
+        { name: "JavaScript" },
+        { name: "TypeScript" },
+        { name: "React" },
+        { name: "Vue.js" },
+        { name: "Next.js" },
+        { name: "Tailwind CSS" },
+        { name: "Sass" },
+        { name: "Git" },
+        { name: "Webpack" },
+        { name: "Vite" }
       ]
     },
     {
-      category: "后端开发",
-      icon: "server",
+      category: "软技能",
+      icon: "user",
       items: [
-        { name: "Node.js", level: 4, years: 3 },
-        { name: "Express", level: 4, years: 2 },
-        { name: "Python", level: 3, years: 1 },
-        { name: "PostgreSQL", level: 3, years: 1 },
-        { name: "MongoDB", level: 3, years: 2 }
-      ]
-    },
-    {
-      category: "工具与其他",
-      icon: "tool",
-      items: [
-        { name: "Git", level: 4, years: 3 },
-        { name: "Docker", level: 3, years: 1 },
-        { name: "AWS", level: 2, years: 1 },
-        { name: "Vite", level: 4, years: 2 },
-        { name: "Framer Motion", level: 3, years: 1 }
+        { name: "用户体验设计" },
+        { name: "响应式设计" },
+        { name: "团队协作" },
+        { name: "问题解决" },
+        { name: "代码审查" },
+        { name: "技术文档" },
+        { name: "敏捷开发" },
+        { name: "持续学习" }
       ]
     }
   ],
   projects: [
     {
       id: "project-1",
-      title: "电商平台前端重构",
-      description: "使用 React + TypeScript + Tailwind CSS 重构电商平台前端，提升用户体验和性能。",
-      longDescription: "负责电商平台的前端重构工作，使用现代技术栈替代传统的 jQuery 项目。重构后页面加载速度提升 60%，用户留存率增加 30%，移动端适配更加完善。",
-      techStack: ["React", "TypeScript", "Tailwind CSS", "Redux", "REST API"],
-      image: "/images/project-1.jpg",
-      demoUrl: "https://demo.example.com",
-      repoUrl: "https://github.com/username/ecommerce-platform"
+      title: "电商网站",
+      description: "一个现代化的电商网站，包含商品展示、购物车、订单管理等功能。",
+      longDescription: "一个现代化的电商网站，包含商品展示、购物车、订单管理等功能。使用React、Tailwind CSS和Node.js开发。",
+      techStack: ["React", "Tailwind CSS", "Node.js"],
+      image: "/images/project1.jpg",
+      demoUrl: "#",
+      repoUrl: "#"
     },
     {
       id: "project-2",
-      title: "任务管理系统",
-      description: "全栈开发的任务管理系统，支持团队协作和任务追踪。",
-      longDescription: "使用 Node.js + Express + MongoDB 开发后端 API，React + TypeScript 开发前端界面。系统支持任务创建、分配、跟踪、评论等功能，具备完整的用户权限管理。",
-      techStack: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "JWT"],
-      image: "/images/project-2.jpg",
-      demoUrl: "https://task-manager.example.com",
-      repoUrl: "https://github.com/username/task-manager"
+      title: "待办事项应用",
+      description: "一个功能完整的待办事项应用，支持任务创建、编辑、删除和筛选。",
+      longDescription: "一个功能完整的待办事项应用，支持任务创建、编辑、删除和筛选。使用Vue.js、TypeScript和Firebase开发。",
+      techStack: ["Vue.js", "TypeScript", "Firebase"],
+      image: "/images/project2.jpg",
+      demoUrl: "#",
+      repoUrl: "#"
     },
     {
       id: "project-3",
-      title: "个人博客系统",
-      description: "基于 Next.js 的静态生成博客系统，支持 Markdown 写作和 SEO 优化。",
-      longDescription: "使用 Next.js 构建的静态生成博客系统，支持 Markdown 写作、自动生成文章摘要、代码高亮、SEO 优化等功能。博客使用 GitHub Actions 实现自动部署。",
-      techStack: ["Next.js", "TypeScript", "Markdown", "Tailwind CSS", "Vercel"],
-      image: "/images/project-3.jpg",
-      demoUrl: "https://blog.example.com",
-      repoUrl: "https://github.com/username/personal-blog"
+      title: "博客系统",
+      description: "一个基于Next.js的博客系统，支持Markdown写作、评论和分类管理。",
+      longDescription: "一个基于Next.js的博客系统，支持Markdown写作、评论和分类管理。使用Next.js、Markdown和MongoDB开发。",
+      techStack: ["Next.js", "Markdown", "MongoDB"],
+      image: "/images/project3.jpg",
+      demoUrl: "#",
+      repoUrl: "#"
+    },
+    {
+      id: "project-4",
+      title: "聊天应用",
+      description: "一个实时聊天应用，支持私聊和群聊，包含消息推送和文件上传功能。",
+      longDescription: "一个实时聊天应用，支持私聊和群聊，包含消息推送和文件上传功能。使用React、Socket.io和Express开发。",
+      techStack: ["React", "Socket.io", "Express"],
+      image: "/images/project4.jpg",
+      demoUrl: "#",
+      repoUrl: "#"
+    },
+    {
+      id: "project-5",
+      title: "数据分析仪表板",
+      description: "一个数据可视化仪表板，展示关键业务指标和趋势分析。",
+      longDescription: "一个数据可视化仪表板，展示关键业务指标和趋势分析。使用React、D3.js和Redux开发。",
+      techStack: ["React", "D3.js", "Redux"],
+      image: "/images/project5.jpg",
+      demoUrl: "#",
+      repoUrl: "#"
+    },
+    {
+      id: "project-6",
+      title: "个人博客",
+      description: "我的个人技术博客，分享前端开发经验和学习笔记。",
+      longDescription: "我的个人技术博客，分享前端开发经验和学习笔记。使用Gatsby、GraphQL和Netlify开发。",
+      techStack: ["Gatsby", "GraphQL", "Netlify"],
+      image: "/images/project6.jpg",
+      demoUrl: "#",
+      repoUrl: "#"
     }
   ],
   theme: {
     primaryColor: "blue-500",
     accentColor: "purple-500",
     darkMode: false,
-    font: "Inter"
+    font: "Archivo"
   }
 };

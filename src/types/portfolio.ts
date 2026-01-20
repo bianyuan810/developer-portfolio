@@ -8,7 +8,6 @@ export interface PersonalInfo {
   email?: string;                  // 邮箱地址
   phone?: string;                  // 联系电话
   socialLinks: SocialLink[];       // 社交媒体链接
-  resumeUrl?: string;              // 简历下载链接
 }
 
 // 社交媒体链接接口
@@ -29,8 +28,6 @@ export interface SkillCategory {
 // 技能项接口
 export interface SkillItem {
   name: string;                    // 技能名称
-  level?: number;                  // 熟练度 (1-5, 可选)
-  years?: number;                  // 使用年限 (可选)
   highlighted?: boolean;           // 是否高亮显示 (默认 false)
 }
 

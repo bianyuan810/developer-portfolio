@@ -1,47 +1,102 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Sun, Moon } from 'lucide-react';
 
 /**
  * 网站头部导航组件
- * 包含 logo、导航链接和移动端菜单
+ * 包含 logo、导航链接和深色模式切换
  */
 export const Header: React.FC = () => {
-  // 移动端菜单开关状态
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // 深色模式状态 - 直接在初始值中计算系统偏好
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // 检查localStorage中的主题设置
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme === 'dark';
+    }
+    // 没有保存的主题时，检查系统偏好
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 
   // 导航链接数据
   const navLinks = [
-    { name: '首页', path: '/' },
-    { name: '项目', path: '/projects' },
-    { name: '关于', path: '/about' }
+    { name: '首页', path: '#' },
+    { name: '项目', path: '#projects' },
+    { name: '技能', path: '#skills' },
+    { name: '联系', path: '#contact' }
   ];
 
-  return (
-    <header className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-sm z-50">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo 或网站名称 */}
-        <Link to="/" className="text-xl font-bold text-blue-500">
-          张三的作品集
-        </Link>
+  // 初始化主题和监听系统偏好变化
+  useEffect(() => {
+    // 应用主题
+    document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
 
-        {/* 桌面端导航链接 */}
-        <nav className="hidden md:flex space-x-8">
+  // 监听系统偏好变化
+  useEffect(() => {
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsDarkMode(e.matches);
+    };
+    
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', handleChange);
+    
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
+  }, []);
+
+  // 切换主题
+  const toggleDarkMode = () => {
+    const newTheme = isDarkMode ? 'light' : 'dark';
+    setIsDarkMode(!isDarkMode);
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
+
+  return (
+    <nav className="px-4 py-4 md:px-6 lg:px-8">
+      
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        {/* Logo 或网站名称 */}
+        <a 
+          href="#" 
+          className="text-2xl font-bold" 
+          style={{ 
+            background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}
+        >
+          张三的作品集
+        </a>
+
+        {/* 导航链接和深色模式切换 */}
+        <div className="flex items-center space-x-6">
+          {/* 导航链接 */}
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.path}
-              to={link.path}
-              className="text-gray-600 hover:text-blue-500 transition-colors duration-200 font-medium"
+              href={link.path}
+              className="text-sm font-medium hover:text-blue-500 transition-colors"
             >
               {link.name}
-            </Link>
+            </a>
           ))}
-        </nav>
+          
+          {/* 深色模式切换按钮 */}
+          <button id="theme-toggle" 
+            className="theme-toggle" 
+            aria-label="切换主题"
+            onClick={toggleDarkMode}
+          >
+            {isDarkMode ? <Moon size={20} /> : <Sun size={20} />}
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
-        {/* 移动端菜单按钮 */}
-        <button
-          className="md:hidden text-gray-600 hover:text-blue-500 transition-colors duration-200"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? '关闭菜单' : '打开菜单'}
-        >
-          {isMenuOpen ? <X size
+export default Header;

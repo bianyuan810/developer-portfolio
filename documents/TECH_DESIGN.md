@@ -71,7 +71,7 @@ interface PersonalInfo {
   email?: string;                  // 邮箱地址
   phone?: string;                  // 联系电话
   socialLinks: SocialLink[];       // 社交媒体链接
-  resumeUrl?: string;              // 简历下载链接
+
 }
 
 interface SocialLink {
@@ -92,8 +92,6 @@ interface SkillCategory {
 
 interface SkillItem {
   name: string;                    // 技能名称
-  level?: number;                  // 熟练度 (1-5, 可选)
-  years?: number;                  // 使用年限 (可选)
   highlighted?: boolean;           // 是否高亮显示 (默认 false)
 }
 ```
@@ -162,9 +160,9 @@ export const portfolioData: PortfolioData = {
       category: "Frontend",
       icon: "layout",
       items: [
-        { name: "React", level: 5, years: 3, highlighted: true },
-        { name: "TypeScript", level: 4, years: 2 },
-        { name: "Tailwind CSS", level: 4, years: 2 }
+        { name: "React", highlighted: true },
+        { name: "TypeScript" },
+        { name: "Tailwind CSS" }
       ]
     }
   ],

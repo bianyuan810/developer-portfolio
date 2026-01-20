@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(identify:*)",
+      "Bash(python -c \"from PIL import Image; img = Image.open\\('public/images/avatar.jpg'\\); print\\(f'Image size: {img.size}'\\)\":*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run build:*)",
+      "Bash(curl:*)",
+      "Bash(grep:*)",
+      "Bash(taskkill:*)",
+      "mcp__chrome-devtools__new_page",
+      "mcp__chrome-devtools__take_snapshot",
+      "mcp__chrome-devtools__evaluate_script",
+      "mcp__chrome-devtools__navigate_page",
+      "Bash(npm install)",
+      "Bash(npx tailwindcss init:*)",
+      "Bash(npx tailwindcss --help:*)",
+      "mcp__chrome-devtools__resize_page"
+    ]
+  }
+}
