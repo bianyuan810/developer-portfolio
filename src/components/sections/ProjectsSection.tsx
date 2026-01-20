@@ -4,16 +4,14 @@ import { ExternalLink, Github } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { portfolioData } from '@/data/portfolio';
+import type { Project } from '@/types/portfolio';
 
 /**
  * 项目展示区域组件
  * 以卡片形式展示个人项目
  */
-export const ProjectsSection: React.FC<{ showAll?: boolean }> = ({ showAll = false }) => {
+export const ProjectsSection: React.FC = () => {
   const { projects } = portfolioData;
-  
-  // 根据 showAll 属性决定是否显示所有项目
-  const displayProjects = showAll ? projects : projects;
 
   return (
     <section className="py-20 bg-gray-50">
@@ -35,7 +33,7 @@ export const ProjectsSection: React.FC<{ showAll?: boolean }> = ({ showAll = fal
 
         {/* 项目卡片网格 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project: Project, index: number) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -52,32 +50,28 @@ export const ProjectsSection: React.FC<{ showAll?: boolean }> = ({ showAll = fal
                   <div className="flex flex-wrap gap-2">
                     {/* 项目演示链接 */}
                     {project.demoUrl && (
-                      <Button
-                        variant="primary"
-                        size="sm"
-                        icon={<ExternalLink size={16} />}
-                        as="a"
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        演示
-                      </Button>
+                      <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-block">
+                        <Button
+                          variant="primary"
+                          size="sm"
+                          icon={<ExternalLink size={16} />}
+                        >
+                          演示
+                        </Button>
+                      </a>
                     )}
                     
                     {/* 项目代码链接 */}
                     {project.repoUrl && (
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        icon={<Github size={16} />}
-                        as="a"
-                        href={project.repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        代码
-                      </Button>
+                      <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="inline-block">
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          icon={<Github size={16} />}
+                        >
+                          代码
+                        </Button>
+                      </a>
                     )}
                   </div>
                 )}
@@ -87,7 +81,7 @@ export const ProjectsSection: React.FC<{ showAll?: boolean }> = ({ showAll = fal
                 
                 {/* 项目技术栈 */}
                 <div className="flex flex-wrap gap-2">
-                  {project.techStack.map((tech) => (
+                  {project.techStack.map((tech: string) => (
                     <span
                       key={tech}
                       className="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full"

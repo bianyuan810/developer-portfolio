@@ -13,6 +13,6 @@
 - [x] 9. 开发页面板块组件：HeroSection、SkillsSection、ProjectsSection、ContactSection 等
 - [x] 10. 开发页面组件：完善 Home.tsx、Projects.tsx、About.tsx 等
 - [x] 11. 配置路由：完善 src/router/index.tsx 文件，配置路由
-- [ ] 12. 添加样式和动画：使用 Tailwind CSS 和 Framer Motion 实现样式和动画效果
-- [ ] 13. 测试：运行测试命令，确保代码质量
-- [ ] 14. 构建和部署：构建项目并部署到 Vercel 或其他平台
+- [x] 12. 添加样式和动画：使用 Tailwind CSS 和 Framer Motion 实现样式和动画效果
+- [x] 13. 测试：运行测试命令，确保代码质量
+- [x] 14. 构建和部署：构建项目并部署到 Vercel 或其他平台

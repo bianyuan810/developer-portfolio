@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Layout, Server, Tool } from 'lucide-react';
+import { Layout, Server, Settings } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio';
+import type { SkillCategory as SkillCategoryType, SkillItem } from '@/types/portfolio';
 
 /**
  * 技能展示区域组件
@@ -14,7 +15,7 @@ export const SkillsSection: React.FC = () => {
   const categoryIcons = {
     layout: <Layout size={20} className="text-blue-500" />,
     server: <Server size={20} className="text-blue-500" />,
-    tool: <Tool size={20} className="text-blue-500" />
+    tool: <Settings size={20} className="text-blue-500" />
   };
 
   return (
@@ -37,7 +38,7 @@ export const SkillsSection: React.FC = () => {
 
         {/* 技能分类网格 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skills.map((skillCategory, index) => (
+          {skills.map((skillCategory: SkillCategoryType, index: number) => (
             <motion.div
               key={skillCategory.category}
               initial={{ opacity: 0, y: 20 }}
@@ -54,7 +55,7 @@ export const SkillsSection: React.FC = () => {
 
               {/* 技能列表 */}
               <ul className="space-y-4">
-                {skillCategory.items.map((skill) => (
+                {skillCategory.items.map((skill: SkillItem) => (
                   <li key={skill.name}>
                     <div className="flex justify-between items-center mb-1">
                       <div className="flex items-center">
