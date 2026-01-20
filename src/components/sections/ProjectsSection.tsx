@@ -9,8 +9,11 @@ import { portfolioData } from '@/data/portfolio';
  * 项目展示区域组件
  * 以卡片形式展示个人项目
  */
-export const ProjectsSection: React.FC = () => {
+export const ProjectsSection: React.FC<{ showAll?: boolean }> = ({ showAll = false }) => {
   const { projects } = portfolioData;
+  
+  // 根据 showAll 属性决定是否显示所有项目
+  const displayProjects = showAll ? projects : projects;
 
   return (
     <section className="py-20 bg-gray-50">
