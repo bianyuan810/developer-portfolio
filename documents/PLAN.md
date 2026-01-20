@@ -3,7 +3,7 @@
 ## 开发步骤
 
 - [x] 1. 项目初始化：使用 Vite + React + TypeScript 创建项目
-- [ ] 2. 安装依赖：添加 React Router v6、Framer Motion、Lucide React 等
+- [x] 2. 安装依赖：添加 React Router v6、Framer Motion、Lucide React 等
 - [ ] 3. 基础配置：配置 TypeScript、Tailwind CSS、Vite 等
 - [ ] 4. 创建目录结构：创建 src/components/ui、src/components/sections、src/components/layout 等子目录
 - [ ] 5. 开发类型定义：完善 src/types/portfolio.ts 文件，定义所有数据接口
