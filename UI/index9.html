@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Morphism Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700&family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* 玻璃拟态颜色变量 */
+            --bg-primary: #f0f4f8;
+            --bg-secondary: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-primary: #2563eb;
+            --accent-secondary: #7c3aed;
+            --accent-tertiary: #ec4899;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --glass-hover: rgba(255, 255, 255, 0.25);
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 玻璃拟态效果 */
+        .glass-effect {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: var(--glass-shadow);
+            transition: all 0.3s ease;
+        }
+
+        /* 英雄区域 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 40px 20px;
+        }
+
+        /* 背景装饰元素 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(20px, -20px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        .hero .glass-effect {
+            padding: 4rem 2rem;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Varela Round', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.4);
+            background: linear-gradient(45deg, var(--accent-secondary), var(--accent-tertiary));
+        }
+
+        /* 项目网格 */
+        .projects {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Varela Round', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 4rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card .glass-effect {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover .glass-effect {
+            background: var(--glass-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover .project-image::after {
+            left: 100%;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-title {
+            font-family: 'Varela Round', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            padding: 4px 12px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* 关于部分 */
+        .about {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                align-items: center;
+            }
+        }
+
+        .about-text .glass-effect {
+            padding: 2rem;
+        }
+
+        .about-text h2 {
+            font-family: 'Varela Round', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .about-image .glass-effect {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, var(--accent-secondary), var(--accent-tertiary));
+        }
+
+        /* 联系部分 */
+        .contact {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .contact-item:hover .glass-effect {
+            background: var(--glass-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-item h3 {
+            font-family: 'Varela Round', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-item p {
+            color: var(--text-secondary);
+        }
+
+        /* 页脚 */
+        footer {
+            padding: 2rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 4rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero .glass-effect {
+                padding: 3rem 1.5rem;
+            }
+
+            .projects,
+            .about,
+            .contact {
+                padding: 40px 0;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 减少动画偏好 */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* 焦点状态 */
+        .project-card:focus,
+        .cta-button:focus,
+        .contact-item:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 4px;
+        }
+
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="glass-effect">
+                <h1>创意设计师</h1>
+                <p>将梦想转化为视觉艺术</p>
+                <a href="#projects" class="cta-button">查看作品</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目网格 -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">精选作品</h2>
+            <div class="project-grid">
+                <div class="project-card" tabindex="0">
+                    <div class="glass-effect">
+                        <div class="project-image">🎨</div>
+                        <div class="project-content">
+                            <h3 class="project-title">品牌设计</h3>
+                            <p class="project-description">为新兴科技公司创建的完整品牌标识系统，包括logo、色彩方案和视觉指南。</p>
+                            <div class="project-tags">
+                                <span class="project-tag">品牌设计</span>
+                                <span class="project-tag">Logo</span>
+                                <span class="project-tag">视觉识别</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" tabindex="0">
+                    <div class="glass-effect">
+                        <div class="project-image">💻</div>
+                        <div class="project-content">
+                            <h3 class="project-title">网站开发</h3>
+                            <p class="project-description">响应式网站设计，融合了现代UI/UX原则和流畅的动画效果，提升用户体验。</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Web设计</span>
+                                <span class="project-tag">响应式</span>
+                                <span class="project-tag">UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" tabindex="0">
+                    <div class="glass-effect">
+                        <div class="project-image">📱</div>
+                        <div class="project-content">
+                            <h3 class="project-title">移动应用</h3>
+                            <p class="project-description">创新的移动应用界面设计，专注于用户体验和直观的交互设计。</p>
+                            <div class="project-tags">
+                                <span class="project-tag">App设计</span>
+                                <span class="project-tag">UI设计</span>
+                                <span class="project-tag">UX设计</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" tabindex="0">
+                    <div class="glass-effect">
+                        <div class="project-image">🎬</div>
+                        <div class="project-content">
+                            <h3 class="project-title">视频制作</h3>
+                            <p class="project-description">动态视频内容，结合了动画、特效和故事讲述，为品牌创建引人入胜的视觉体验。</p>
+                            <div class="project-tags">
+                                <span class="project-tag">视频编辑</span>
+                                <span class="project-tag">动画</span>
+                                <span class="project-tag">视觉效果</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" tabindex="0">
+                    <div class="glass-effect">
+                        <div class="project-image">📊</div>
+                        <div class="project-content">
+                            <h3 class="project-title">数据可视化</h3>
+                            <p class="project-description">将复杂数据转化为清晰、直观的可视化图表和信息图，帮助用户理解数据洞察。</p>
+                            <div class="project-tags">
+                                <span class="project-tag">数据可视化</span>
+                                <span class="project-tag">信息图</span>
+                                <span class="project-tag">图表设计</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" tabindex="0">
+                    <div class="glass-effect">
+                        <div class="project-image">🎭</div>
+                        <div class="project-content">
+                            <h3 class="project-title">插画创作</h3>
+                            <p class="project-description">独特的插画作品，融合了多种风格和技术，为各种项目增添艺术气息。</p>
+                            <div class="project-tags">
+                                <span class="project-tag">插画</span>
+                                <span class="project-tag">数字艺术</span>
+                                <span class="project-tag">创意设计</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于部分 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="glass-effect">
+                        <h2>关于我</h2>
+                        <p>我是一位充满激情的创意设计师，专注于创建令人难忘的视觉体验。拥有多年的设计经验，擅长品牌设计、网站开发和移动应用界面设计。</p>
+                        <p>我的设计理念是将美学与功能性相结合，创造出既美观又实用的设计作品。我相信好的设计能够传达情感、讲述故事，并与观众建立连接。</p>
+                        <p>在工作中，我注重细节，追求完美，并始终保持对最新设计趋势和技术的关注。我喜欢挑战自己，不断探索新的设计可能性。</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="glass-effect">👋</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系部分 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">保持联系</h2>
+            <div class="contact-info">
+                <div class="contact-item" tabindex="0">
+                    <div class="glass-effect">
+                        <h3>📧 邮箱</h3>
+                        <p>contact@designer.com</p>
+                    </div>
+                </div>
+                <div class="contact-item" tabindex="0">
+                    <div class="glass-effect">
+                        <h3>📱 电话</h3>
+                        <p>+86 138 0000 0000</p>
+                    </div>
+                </div>
+                <div class="contact-item" tabindex="0">
+                    <div class="glass-effect">
+                        <h3>🌐 网站</h3>
+                        <p>www.designer.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 创意设计师. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 观察所有项目卡片
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // 观察关于内容
+        document.querySelectorAll('.about-content > div').forEach(content => {
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(20px)';
+            content.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(content);
+        });
+
+        // 观察联系项
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
