@@ -24,12 +24,7 @@ export const HeroSection: React.FC = () => {
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               {personalInfo.bio}
             </p>
-            <div className="flex space-x-4">
-              <a href="#projects" className="btn">查看项目</a>
-              <a href="#contact" className="btn bg-transparent border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">
-                联系我
-              </a>
-            </div>
+
           </div>
           <div className="md:w-1/2 flex justify-center">
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-blue-500 neon-border">
