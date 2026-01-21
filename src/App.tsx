@@ -6,6 +6,7 @@ import { Footer } from './components/layout/Footer';
 import { Routes } from './router';
 import { ArrowUp } from 'lucide-react';
 import './index.css';
+import './index-natural.css';
 
 /**
  * 应用入口组件
@@ -102,7 +103,7 @@ function App() {
         <button 
           ref={backToTopRef}
           id="back-to-top" 
-          className="fixed bottom-8 right-8 bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-600 transition-all duration-300 opacity-0 invisible"
+          className="fixed bottom-8 right-8 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 invisible back-to-top-btn"
           aria-label="回到顶部"
         >
           <ArrowUp size={20} />

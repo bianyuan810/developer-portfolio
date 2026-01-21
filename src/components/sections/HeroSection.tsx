@@ -18,8 +18,8 @@ export const HeroSection: React.FC = () => {
         <div className="flex items-center" style={{ flexDirection: 'row' }}>
           <div className="md:w-1/2 mb-10 md:mb-0">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              {personalInfo.name}
-              <span className="neon-text text-blue-500"> · {personalInfo.title}</span>
+              <span className="developer-name">{personalInfo.name}</span>
+              <span className="section-title"> · {personalInfo.title}</span>
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               {personalInfo.bio}

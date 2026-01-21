@@ -132,6 +132,7 @@ export const portfolioData: PortfolioData = {
     primaryColor: "blue-500",
     accentColor: "purple-500",
     darkMode: false,
-    font: "Archivo"
+    font: "Archivo",
+    websiteTitle: "张三的作品集"
   }
 };

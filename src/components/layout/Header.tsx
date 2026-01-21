@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Palette } from 'lucide-react';
+import { portfolioData } from '@/data/portfolio';
 
 /**
  * 网站头部导航组件
@@ -95,15 +96,9 @@ export const Header: React.FC = () => {
         {/* Logo 或网站名称 */}
         <a 
           href="#" 
-          className="text-2xl font-bold" 
-          style={{ 
-            background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
-          }}
+          className="text-2xl font-bold website-title"
         >
-          张三的作品集
+          {portfolioData.theme?.websiteTitle || '张三的作品集'}
         </a>
 
         {/* 导航链接、深色模式切换和风格切换 */}

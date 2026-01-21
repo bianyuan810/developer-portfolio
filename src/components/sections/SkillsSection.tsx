@@ -11,8 +11,8 @@ export const SkillsSection: React.FC = () => {
   return (
     <section id="skills" className="py-20 px-4 md:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          <span className="neon-text text-blue-500">我的技能</span>
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center section-title">
+          我的技能
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

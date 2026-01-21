@@ -11,6 +11,8 @@
   --accent-color: #2563EB;
   --accent-hover: #1D4ED8;
   --neon-color: #2563EB;
+  --footer-bg: #F0F0F0;
+  --footer-text: var(--text-secondary);
 }
 
 [data-theme="dark"] {
@@ -23,6 +25,54 @@
   --accent-color: #60A5FA;
   --accent-hover: #93C5FD;
   --neon-color: #60A5FA;
+  --footer-bg: #111113;
+  --footer-text: var(--text-secondary);
+}
+
+/* 页脚样式 */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  transition: all 0.3s ease;
+  border-top: 1px solid var(--border-color);
+}
+
+/* 自然有机风格的页脚样式 */
+[data-style="natural"] footer {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  position: relative;
+}
+
+/* 文本辅助类 */
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+/* 回到顶部按钮样式 */
+.back-to-top-btn {
+  background-color: var(--accent-color);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.back-to-top-btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px -5px var(--accent-color);
+}
+
+/* 自然有机风格的回到顶部按钮样式 */
+[data-style="natural"] .back-to-top-btn {
+  background: linear-gradient(45deg, var(--accent-color), var(--accent-hover));
+  border: 2px solid var(--accent-color);
+  box-shadow: var(--shadow);
+}
+
+[data-style="natural"] .back-to-top-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px rgba(139, 195, 74, 0.3);
+  border-color: var(--accent-hover);
 }
 
 * {
@@ -108,6 +158,33 @@ nav {
   position: sticky;
   top: 0;
   z-index: 50;
+}
+
+/* 网站标题样式 */
+.website-title {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+/* 章节标题样式 */
+.section-title {
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color), 0 0 15px var(--neon-color);
+}
+
+/* 项目详情链接样式 */
+.project-detail-link {
+  color: var(--accent-color);
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+
+.project-detail-link:hover {
+  color: var(--accent-hover);
+  text-shadow: 0 0 5px var(--accent-color);
 }
 
 /* 项目卡片样式 */

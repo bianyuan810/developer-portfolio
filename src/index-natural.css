@@ -1,0 +1,242 @@
+/* 自然有机风格变量 */
+[data-style="natural"] {
+  --bg-primary: #f8f9f5;
+  --bg-secondary: #e8ede0;
+  --bg-card: #ffffff;
+  --text-primary: #2c3e50;
+  --text-secondary: #6c757d;
+  --accent-color: #8bc34a;
+  --accent-hover: #4caf50;
+  --border-color: #e0e0e0;
+  --shadow: 0 4px 20px rgba(139, 195, 74, 0.15);
+  --border-radius: 20px;
+  --neon-color: #8bc34a;
+}
+
+/* 深色模式下的自然有机风格 */
+[data-theme="dark"][data-style="natural"] {
+  --bg-primary: #1a1d18;
+  --bg-secondary: #232720;
+  --bg-card: #2d312a;
+  --text-primary: #e8ede0;
+  --text-secondary: #a3b094;
+  --accent-color: #9ccc65;
+  --accent-hover: #8bc34a;
+  --border-color: #3a4035;
+}
+
+/* 自然有机风格 - 背景纹理 */
+[data-style="natural"] body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%238bc34a" fill-opacity="0.05" fill-rule="evenodd"/%3E%3C/svg%3E');
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 自然有机风格 - 网站标题样式 */
+[data-style="natural"] .website-title {
+  color: var(--accent-color);
+  text-shadow: 0 2px 10px rgba(139, 195, 74, 0.3);
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: var(--accent-color);
+}
+
+/* 自然有机风格 - 章节标题样式 */
+[data-style="natural"] .section-title {
+  color: var(--accent-color);
+  text-shadow: 0 2px 10px rgba(139, 195, 74, 0.3);
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: var(--accent-color);
+}
+
+/* 自然有机风格 - 章节标题装饰 */
+[data-style="natural"] .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  border-radius: 2px;
+}
+
+/* 自然有机风格 - 项目卡片样式 */
+[data-style="natural"] .project-card {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+[data-style="natural"] .project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent-color);
+}
+
+/* 自然有机风格 - 项目详情链接样式 */
+[data-style="natural"] .project-detail-link {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+[data-style="natural"] .project-detail-link:hover {
+  color: var(--accent-hover);
+  text-shadow: 0 2px 10px rgba(139, 195, 74, 0.3);
+}
+
+/* 自然有机风格 - 按钮样式 */
+[data-style="natural"] .btn {
+  background: linear-gradient(45deg, var(--accent-color), var(--accent-hover));
+  border-radius: 50px;
+  box-shadow: var(--shadow);
+}
+
+[data-style="natural"] .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px rgba(139, 195, 74, 0.3);
+}
+
+/* 自然有机风格 - 技能标签样式 */
+[data-style="natural"] .skill-tag {
+  background-color: var(--bg-secondary);
+  color: var(--accent-color);
+  border-radius: 20px;
+}
+
+[data-style="natural"] .skill-tag:hover {
+  background-color: var(--accent-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* 自然有机风格 - 导航链接样式 */
+[data-style="natural"] nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+[data-style="natural"] nav a:hover::after {
+  width: 100%;
+}
+
+/* 自然有机风格 - 开发者姓名样式 */
+[data-style="natural"] .developer-name {
+  color: var(--accent-color);
+  text-shadow: 0 2px 15px rgba(139, 195, 74, 0.3);
+}
+
+/* 自然有机风格 - 联系信息图标容器 */
+[data-style="natural"] .contact-icon-container {
+  background-color: rgba(139, 195, 74, 0.1);
+  border: 2px solid var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+[data-style="natural"] .contact-icon-container:hover {
+  background-color: rgba(139, 195, 74, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(139, 195, 74, 0.3);
+}
+
+/* 自然有机风格 - 联系信息图标 */
+[data-style="natural"] .contact-icon {
+  color: var(--accent-color);
+}
+
+/* 自然有机风格 - 社交媒体图标容器 */
+[data-style="natural"] .social-icon-container {
+  background-color: rgba(139, 195, 74, 0.1);
+  border: 2px solid var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+[data-style="natural"] .social-icon-container:hover {
+  background-color: var(--accent-color);
+  color: white;
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 6px 20px rgba(139, 195, 74, 0.3);
+}
+
+/* 自然有机风格 - 社交媒体图标 */
+[data-style="natural"] .social-icon {
+  color: var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+[data-style="natural"] .social-icon-container:hover .social-icon {
+  color: white;
+  transform: rotate(360deg);
+}
+
+/* 自然有机风格 - 英雄区域装饰 */
+[data-style="natural"] .hero h1 {
+  position: relative;
+}
+
+[data-style="natural"] .hero h1::before {
+  content: '🍃';
+  position: absolute;
+  top: -20px;
+  left: -30px;
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+[data-style="natural"] .hero h1::after {
+  content: '🌿';
+  position: absolute;
+  bottom: -20px;
+  right: -30px;
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite 1s;
+}
+
+/* 自然有机风格 - 页脚装饰 */
+[data-style="natural"] footer::before {
+  content: '🌱';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  animation: grow 4s ease-in-out infinite;
+}
+
+/* 自然有机风格 - 动画效果 */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(10deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes grow {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.2); }
+  100% { transform: translateX(-50%) scale(1); }
+}

@@ -50,6 +50,7 @@ export interface ThemeConfig {
   accentColor?: string;            // 强调色 (Tailwind 颜色类)
   darkMode?: boolean;              // 是否启用深色模式
   font?: string;                   // 字体选择
+  websiteTitle?: string;           // 网站标题
 }
 
 // 主数据结构接口
